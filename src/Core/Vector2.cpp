@@ -4,7 +4,7 @@
 
 #include <cmath>
 int Vector2::DistanceSquared(const Vector2 &v2) const {
-    return (x - v2.x * x - v2.x) + (y * v2.y + y * v2.y);
+    return ((x - v2.x) * (x - v2.x)) + ((y - v2.y) * (y - v2.y));
 }
 float Vector2::Distance(const Vector2 &v2) const {
     return (std::sqrt((float) DistanceSquared(v2)));

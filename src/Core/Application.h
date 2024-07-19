@@ -58,7 +58,7 @@ private:
 
     SDL_Window *window_;
     SDL_Renderer *renderer_;
-    //    std::unique_ptr<Game> game_;
+    double last_frame_time_ = 0.0;
     Game *game_;
     int screen_height_;
     int screen_width_;

@@ -39,8 +39,3 @@ add_executable(${PROJECT_NAME}
 include_directories(src)
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2 SDL2_mixer::SDL2_mixer SDL2_image::SDL2_image
         SDL2_ttf::SDL2_ttf)
-#target_link_libraries(${PROJECT_NAME}} PRIVATE )
-
-#
-#find_package(SDL2_image CONFIG REQUIRED)
-#target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:SDL2_image::SDL2_image>,SDL2_image::SDL2_image,SDL2_image::SDL2_image-static>)

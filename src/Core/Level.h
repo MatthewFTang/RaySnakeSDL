@@ -47,7 +47,11 @@ private:
     std::unique_ptr<Player> player_;
     std::unique_ptr<Food> fruit_;
     GameDifficulty difficulty_;
+    SDL_Rect rect_1_;
+    SDL_Rect rect_2_;
+    SDL_Rect rect_3_;
+    SDL_Rect rect_4_;
 
     int score_;
-    bool CheckCollisionRecs(SDL_Rect rect, SDL_Rect rect_1);
+     [[nodiscard]] static bool CheckCollisionRecs(SDL_Rect rect, SDL_Rect rect_1) ;
 };

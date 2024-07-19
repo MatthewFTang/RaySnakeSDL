@@ -44,6 +44,11 @@ void Game::Update() {
         SoundManger::Instance()->Pause("background_music");
         SoundManger::Instance()->Play("theme_music", true);
     }
+    if (InputManager::Instance()->QuitButtonPressed())
+    {
+      Quit();
+    }
+
 }
 void Game::Quit() {
     Clean();

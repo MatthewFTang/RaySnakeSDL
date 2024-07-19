@@ -3,12 +3,16 @@
 //
 
 #include "SoundManger.h"
-
+#include <iostream>
 SoundManger *SoundManger::s_instance_ = nullptr;
 
 void SoundManger::Load(const std::string &file_path, const std::string &id) {
   if (!sound_map_.contains(id)) {
 	Mix_Music *music = Mix_LoadMUS(file_path.c_str());
+        if (music== nullptr)
+        {
+          std::cout <<"couldn't load sound : " <<file_path<<std::endl;
+        }
 	sound_map_[id] = music;
   }
 }
@@ -41,9 +45,9 @@ void SoundManger::Clean() {
 //	} else if (kS.type == SoundType::SOUND) {
 //	  Sound temp = std::get<Sound>(kS.data);
 //	  UnloadSound(temp);
+
 //	}
 //  }
-
   sound_map_.clear();
   is_playing_.clear();
 }

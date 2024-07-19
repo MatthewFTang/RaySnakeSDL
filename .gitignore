@@ -1,0 +1,34 @@
+# CMake specific
+CMakeCache.txt
+CMakeFiles/
+cmake-build-debug
+
+cmake_install.cmake
+Makefile
+*.make
+
+# Build artifacts
+build/
+Release/
+Debug/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+
+# Editor backups and temporary files
+*~
+*.swp
+.DS_Store
+
+# CLion specific
+.idea/
+*.iml
+
+# User-specific files
+*.user
+*.user.*
+
+# Exclude the directory where CMake external projects are downloaded

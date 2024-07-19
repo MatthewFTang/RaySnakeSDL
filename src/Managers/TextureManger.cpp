@@ -91,7 +91,7 @@ void TextureManger::DrawFrame(const std::string &id, int x_offset, int y_offset,
     SDL_RendererFlip flip;
 
     if (rotation > 90 && rotation < 270) {
-        flip = SDL_FLIP_HORIZONTAL;
+        flip = SDL_FLIP_VERTICAL;
     } else {
         flip = SDL_FLIP_NONE;
     }

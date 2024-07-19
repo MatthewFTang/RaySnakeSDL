@@ -16,6 +16,9 @@ void InputManager::Update() {
             case SDL_KEYUP:
                 if (event.key.repeat == 0) { key_map_[event.key.keysym.sym] = false; }
                 break;
+            case SDL_QUIT:
+              if (event.key.repeat==0) {quit_application_=true;}
+              break;
             default:
                 break;
         }

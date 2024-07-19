@@ -18,7 +18,8 @@ void FontManger::RenderText(const char *text, int font_size, SDL_Color col, int 
     Vector2 pos{pos_x, pos_y};
 
 
-    SDL_Surface *text_surface = TTF_RenderText_Blended(font_map_[font_size], text, {0, 0, 0});
+    SDL_Surface *text_surface = TTF_RenderUTF8_Blended_Wrapped
+        (font_map_[font_size], text, {0, 0, 0},0);
     SDL_Texture *text_texture = SDL_CreateTextureFromSurface(Application::Instance()->GetRenderer(), text_surface);
 
     if (centered) {
@@ -33,8 +34,8 @@ void FontManger::RenderText(const char *text, int font_size, SDL_Color col, int 
     SDL_Rect dest_rect = {pos_shadow.x, pos_shadow.y, text_surface->w, text_surface->h};
     SDL_RenderCopy(Application::Instance()->GetRenderer(), text_texture, &src_rect, &dest_rect);
 
-
-    text_surface = TTF_RenderText_Blended(font_map_[font_size], text, col);
+    text_surface = TTF_RenderUTF8_Blended_Wrapped(font_map_[font_size], text,
+                                                  col,0);
     text_texture = SDL_CreateTextureFromSurface(Application::Instance()->GetRenderer(), text_surface);
     src_rect = {0, 0, text_surface->w, text_surface->h};
     dest_rect = {pos.x, pos.y, text_surface->w, text_surface->h};
