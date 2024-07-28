@@ -13,6 +13,10 @@ enum class SoundType {
   MUSIC,
   SOUND
 };
+struct audioTypes {
+  Mix_Music *music;
+  Mix_Chunk *wav;
+};
 
 class SoundManger {
 
@@ -26,7 +30,7 @@ class SoundManger {
 	return s_instance_;
   }
 
-  void Load(const std::string &file_path, const std::string &id);
+  void Load(const std::string &file_path, const std::string &id, const std::string &type);
   void Play(const std::string &id, bool loop);
   void Pause(const std::string &id);
   void Render();
@@ -35,6 +39,8 @@ class SoundManger {
 
  private:
   SoundManger();
-  std::unordered_map<std::string, Mix_Music *> sound_map_;
+  std::unordered_map<std::string, audioTypes> sound_map_;
+  std::unordered_map<std::string, SoundType> audio_type_;
   std::unordered_map<std::string, bool> is_playing_;
+
 };

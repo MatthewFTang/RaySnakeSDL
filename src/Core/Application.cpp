@@ -72,13 +72,13 @@ void Application::Render() {
 
   game_->Render();
   while (SDL_GetTicks() - last_frame_time_ < 15) {
-    // Wait
+    //Waits until time
   }
   SDL_RenderPresent(renderer_);
   last_frame_time_ = SDL_GetTicks();
 }
 
-void Application::Update() {
+void Application::Update() const {
   game_->Update();
   InputManager::Instance()->Update();
 }

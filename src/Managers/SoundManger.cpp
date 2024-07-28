@@ -6,21 +6,31 @@
 #include <iostream>
 SoundManger *SoundManger::s_instance_ = nullptr;
 
-void SoundManger::Load(const std::string &file_path, const std::string &id) {
+void SoundManger::Load(const std::string &file_path, const std::string &id, const std::string &type) {
   if (!sound_map_.contains(id)) {
-	Mix_Music *music = Mix_LoadMUS(file_path.c_str());
-        if (music== nullptr)
-        {
-          std::cout <<"couldn't load sound : " <<file_path<<std::endl;
-        }
-	sound_map_[id] = music;
+	if (type == "music") {
+	  Mix_Music *audio = Mix_LoadMUS(file_path.c_str());
+	  if (audio == nullptr) {
+		std::cout << "couldn't load sound : " << file_path << std::endl;
+	  }
+	  sound_map_[id].music = audio;
+	  audio_type_[id] = SoundType::MUSIC;
+	} else {
+	  Mix_Chunk *audio = Mix_LoadWAV(file_path.c_str());
+	  sound_map_[id].wav = audio;
+	  audio_type_[id] = SoundType::SOUND;
+	}
   }
 }
 void SoundManger::Play(const std::string &id, bool loop) {
   int n_loops;
   if (loop) { n_loops = -1; }
   else { n_loops = 1; }
-  Mix_PlayMusic(sound_map_[id], n_loops);
+  if (audio_type_[id] == SoundType::MUSIC) {
+	Mix_PlayMusic(sound_map_[id].music, n_loops);
+  } else {
+	Mix_PlayChannel(-1, sound_map_[id].wav, n_loops);
+  }
   is_playing_[id] = true;
 }
 void SoundManger::Pause(const std::string &id) {
@@ -29,12 +39,7 @@ void SoundManger::Pause(const std::string &id) {
   is_playing_[id] = false;
 }
 void SoundManger::Render() {
-//  for (auto const &[kId, kFlag] : is_playing_) {
-//	if (kFlag && sound_map_[kId].type == SoundType::MUSIC) {
-//	  Music temp = std::get<Music>(sound_map_[kId].data);
-//	  UpdateMusicStream(temp);
-//	}
-//  }
+  //Nothing to do
 }
 void SoundManger::Clean() {
 //

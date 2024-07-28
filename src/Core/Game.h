@@ -4,37 +4,30 @@
 
 #pragma once
 
-#include <SDL2/SDL.h>
-
 #include <memory>
-#include <vector>
 
 #include "Level.h"
 #include "Menu/Menu.h"
-#include "Objects/GameObject.h"
 
 class Level;
 class Game {
 public:
-    Game();
-    ~Game() = default;
+  Game();
+  ~Game() = default;
 
-    void Clean() const;
-    void Render();
-    void Update();
-    void Play();
-    void Quit();
-    bool GetRunning() const { return running_; }
+  static void Clean();
+  void Render() const;
+  void Update();
+  void Play();
+  void Quit();
+  [[nodiscard]] bool GetRunning() const { return running_; }
 
-    template<typename T>
-    void SetMenu() {
-        menu_ = std::make_shared<T>(*this);
-    }
-    void NewGame(GameDifficulty difficulty);
+  template <typename T> void SetMenu() { menu_ = std::make_shared<T>(*this); }
+  void NewGame(GameDifficulty difficulty);
 
 private:
-    bool running_ = true;
-    std::unique_ptr<Level> level_;
+  bool running_ = true;
+  std::unique_ptr<Level> level_;
 
-    std::shared_ptr<Menu> menu_;
+  std::shared_ptr<Menu> menu_;
 };
