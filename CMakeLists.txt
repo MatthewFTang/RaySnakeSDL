@@ -3,9 +3,6 @@ project(RaySnakeSDL)
 
 set(CMAKE_CXX_STANDARD 23)
 find_package(SDL2 REQUIRED CONFIG REQUIRED)
-if (!SDL2_FOUND)
-    message(STATUS "Using SDL3 via find_package")
-endif ()
 
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_image REQUIRED)
@@ -39,3 +36,12 @@ add_executable(${PROJECT_NAME}
 include_directories(src)
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2 SDL2_mixer::SDL2_mixer SDL2_image::SDL2_image
         SDL2_ttf::SDL2_ttf)
+# Specify the source directory containing your resources
+set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/src/resources")
+
+# Specify the destination directory in the build folder
+set(DEST_DIR "${CMAKE_BINARY_DIR}/src/")
+
+# Copy the directory
+file(COPY ${RESOURCE_DIR} DESTINATION ${DEST_DIR})
+

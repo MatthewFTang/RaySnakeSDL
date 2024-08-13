@@ -4,8 +4,7 @@
 
 #include "Application.h"
 
-#include <SDL2_ttf/SDL_ttf.h>
-
+#include <SDL_ttf.h>
 #include <iostream>
 
 #include "Game.h"
@@ -72,7 +71,7 @@ void Application::Render() {
 
   game_->Render();
   while (SDL_GetTicks() - last_frame_time_ < 15) {
-    //Waits until time
+    // Waits until time
   }
   SDL_RenderPresent(renderer_);
   last_frame_time_ = SDL_GetTicks();

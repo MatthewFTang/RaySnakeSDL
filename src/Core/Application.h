@@ -6,9 +6,6 @@
 
 #include <SDL2/SDL.h>
 
-#include <memory>
-#include <string>
-
 #include "Core/Game.h"
 struct ApplicationParameters {
   const char *title = "RaySnake";
@@ -19,13 +16,13 @@ struct ApplicationParameters {
 
 class Application {
 
- public:
+public:
   static Application *Instance() {
-	if (!s_instance_) {
-	  s_instance_ = new Application();
-	}
+    if (!s_instance_) {
+      s_instance_ = new Application();
+    }
 
-	return s_instance_;
+    return s_instance_;
   }
 
   ~Application() { delete s_instance_; }
@@ -38,7 +35,7 @@ class Application {
   void Run();
   static Application *s_instance_;
 
- private:
+private:
   Application() = default;
 
   void Initialise();
@@ -48,10 +45,10 @@ class Application {
   void Clean();
 
   SDL_Color background_color_ = {
-	  249,
-	  123,
-	  54,
-	  255,
+      249,
+      123,
+      54,
+      255,
   };
 
   const ApplicationParameters params_ = ApplicationParameters();

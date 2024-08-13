@@ -1,7 +1,6 @@
 
 #include "Core/Application.h"
-
 int main() {
-    Application::Instance()->Run();
-    return 0;
+  Application::Instance()->Run();
+  return 0;
 }

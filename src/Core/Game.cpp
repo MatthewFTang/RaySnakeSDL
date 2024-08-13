@@ -5,7 +5,6 @@
 
 #include "GameDifficulty.h"
 #include "Level.h"
-#include "Managers/FontManger.h"
 #include "Managers/InputManager.h"
 #include "Managers/SoundManger.h"
 #include "Managers/TextureManger.h"
@@ -15,9 +14,9 @@ Game::Game() {
 
   SetMenu<MainMenu>();
   SoundManger::Instance()->Load("src/resources/audio/Instrumental.mp3",
-								"background_music", "music");
-  SoundManger::Instance()->Load("src/resources/audio/Theme1.mp3",
-								"theme_music", "music");
+                                "background_music", "music");
+  SoundManger::Instance()->Load("src/resources/audio/Theme1.mp3", "theme_music",
+                                "music");
   SoundManger::Instance()->Play("theme_music", true);
 }
 
@@ -27,26 +26,26 @@ void Game::Clean() {
 }
 void Game::Render() const {
   if (menu_) {
-	menu_->Render();
+    menu_->Render();
   } else {
-	level_->Render();
+    level_->Render();
   }
   SoundManger::Instance()->Render();
 }
 void Game::Update() {
   if (menu_) {
-	menu_->Update();
+    menu_->Update();
   } else {
-	level_->Update();
+    level_->Update();
   }
 
   if (InputManager::Instance()->IsKeyPress(SDLK_ESCAPE)) {
-	SetMenu<MainMenu>();
-	SoundManger::Instance()->Pause("background_music");
-	SoundManger::Instance()->Play("theme_music", true);
+    SetMenu<MainMenu>();
+    SoundManger::Instance()->Pause("background_music");
+    SoundManger::Instance()->Play("theme_music", true);
   }
   if (InputManager::Instance()->QuitButtonPressed()) {
-	Quit();
+    Quit();
   }
 }
 void Game::Quit() {
