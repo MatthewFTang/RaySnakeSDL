@@ -17,6 +17,8 @@ Debug/
 *.dylib
 *.exe
 *.out
+.vscode
+.cache
 
 # Editor backups and temporary files
 *~
