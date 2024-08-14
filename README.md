@@ -1,6 +1,6 @@
 # RaySnake
 
-## A simple snake game written in C++ using the SDL2.
+## A  snake game written in C++ using the SDL2.
 
 ### How to play:
 
