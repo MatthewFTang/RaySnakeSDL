@@ -1,5 +1,4 @@
 #include <SDL2/SDL.h>
-#include <SDL2_image/SDL_image.h>
 #include <iostream>
 #include <vector>
 int randBetweenPoints(int min,int max)

@@ -3,7 +3,6 @@
 //
 
 #include "MainMenu.h"
-
 #include <Managers/InputManager.h>
 
 #include "AboutMenu.h"
@@ -13,7 +12,7 @@
 
 void MainMenu::Render() {
 
-    int x_pos = 145;
+  const int x_pos = 145;
     TextureManger::Instance()->DrawImage(image_id_);
     FontManger::Instance()->RenderText("RaySnake!", 62, {255, 255, 255}, x_pos, 100);
     FontManger::Instance()->RenderText("A new version by MFT", 48, {255, 255, 255}, x_pos, 200);

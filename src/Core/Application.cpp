@@ -4,7 +4,7 @@
 
 #include "Application.h"
 
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 #include <iostream>
 
 #include "Game.h"

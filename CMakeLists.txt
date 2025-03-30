@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.8)
 project(RaySnakeSDL)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20 )
 find_package(SDL2 REQUIRED CONFIG REQUIRED)
-
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
@@ -34,7 +33,12 @@ add_executable(${PROJECT_NAME}
         src/Menu/AboutMenu.cpp)
 
 include_directories(src)
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2 SDL2_mixer::SDL2_mixer SDL2_image::SDL2_image
+
+
+target_link_libraries(${PROJECT_NAME}
+        PRIVATE SDL2::SDL2
+        SDL2_mixer::SDL2_mixer
+        SDL2_image::SDL2_image
         SDL2_ttf::SDL2_ttf)
 # Specify the source directory containing your resources
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/src/resources")
