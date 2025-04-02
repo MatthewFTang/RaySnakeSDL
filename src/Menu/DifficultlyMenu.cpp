@@ -28,9 +28,9 @@ void DifficultlyMenu::Render() {
 void DifficultlyMenu::Update() {
 
 
-    if (InputManager::Instance()->IsKeyPress(SDLK_DOWN)) {
+    if (InputManager::Instance()->IsKeyPress(SDLK_DOWN) || InputManager::Instance()->IsKeyPress(SDLK_s)) {
         current_selection_++;
-    } else if (InputManager::Instance()->IsKeyPress(SDLK_UP)) {
+    } else if (InputManager::Instance()->IsKeyPress(SDLK_UP)|| InputManager::Instance()->IsKeyPress(SDLK_w)) {
         current_selection_--;
     } else if (InputManager::Instance()->IsKeyPress(SDLK_RETURN)) {
         using enum GameDifficulty;

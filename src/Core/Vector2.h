@@ -7,8 +7,8 @@ public:
     int x;
     int y;
 
-    int DistanceSquared(const Vector2 &v2) const;
-    float Distance(const Vector2 &v2) const;
+    [[nodiscard]] int DistanceSquared(const Vector2 &v2) const;
+    [[nodiscard]] float Distance(const Vector2 &v2) const;
 
     Vector2 operator+(const Vector2 &other) const;
     Vector2 operator-(const Vector2 &other) const;

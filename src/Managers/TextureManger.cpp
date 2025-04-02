@@ -35,7 +35,7 @@ void TextureManger::DrawImage(const std::string &id) {
   SDL_Rect src_rect;
   SDL_Rect dest_rect;
 
-  Vector2 text_size = GetTextureDimensions(id);
+  const Vector2 text_size = GetTextureDimensions(id);
   src_rect.x = src_rect.y = 0;
   src_rect.w = text_size.x;
   src_rect.h = text_size.y;
@@ -89,7 +89,6 @@ void TextureManger::DrawFrame(const std::string &id, int x_offset, int y_offset,
   dest_rect.x = x_offset;
   dest_rect.y = y_offset;
 
-  Vector2 o{dest_height / 2, dest_width / 2};
   SDL_RendererFlip flip;
 
   if (rotation > 90 && rotation < 270) {
@@ -109,8 +108,7 @@ void TextureManger::DeleteTexture(const std::string &id) {
 Vector2 TextureManger::GetTextureDimensions(const std::string &id) {
   int text_size_w = 0;
   int text_size_h = 0; // Declare variables to hold the size
-  if (texture_map_.find(id) !=
-      texture_map_.end()) { // Check if the texture exists
+  if (texture_map_.contains(id)) { // Check if the texture exists
     SDL_Texture *texture = texture_map_[id];
     if (SDL_QueryTexture(texture, nullptr, nullptr, &text_size_w,
                          &text_size_h) ==

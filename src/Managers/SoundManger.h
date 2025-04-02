@@ -30,7 +30,6 @@ public:
             const std::string &type);
   void Play(const std::string &id, bool loop);
   void Pause(const std::string &id);
-  void Render();
   void Clean();
   ~SoundManger();
 

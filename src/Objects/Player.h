@@ -42,11 +42,11 @@ private:
   int current_length_;
   float frames_to_jump_back_one_;
 
-  int dest_height;
-  int dest_width;
-  int width;
-  int height;
-  int items_per_row;
+  int dest_height_;
+  int dest_width_;
+  int width_;
+  int height_;
+  int items_per_row_;
 
   static int GetRandomValue(int i, int max);
 };

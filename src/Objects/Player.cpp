@@ -54,8 +54,8 @@ void Player::UpdatePosition() {
   }
   input_this_frame_ = false;
 
-  auto dx = (int)std::round(movement_speed_ * std::cos(current_angle_));
-  auto dy = (int)std::round(movement_speed_ * std::sin(current_angle_));
+  const auto dx = static_cast<int>(std::round(movement_speed_ * std::cos(current_angle_)));
+  const auto dy = static_cast<int>(std::round(movement_speed_ * std::sin(current_angle_)));
 
   pos_accum_.x = pos_accum_.y = 0;
   Vector2 pos = GetPosition();
@@ -68,8 +68,9 @@ void Player::UpdatePosition() {
 
 void Player::UpdateTail() {
 
-  auto number_pos_needed =
-      (int)std::floor(frames_to_jump_back_one_ * (float)current_length_ - 1);
+  const auto number_pos_needed =
+      static_cast<int>(std::floor(
+      frames_to_jump_back_one_ * static_cast<float>(current_length_) - 1));
   tail_positions_[0] = GetPosition();
 
   int size_squared = (GetDestWidth() * GetDestWidth());
@@ -81,7 +82,7 @@ void Player::UpdateTail() {
   rotation_positions_[0] = GetRotation();
 
   for (int i = 0; i < current_length_; i++) {
-    auto new_ind = static_cast<int>(
+    const auto new_ind = static_cast<int>(
         std::floor(frames_to_jump_back_one_ * static_cast<float>(i)));
     tail_[i] = tail_positions_[new_ind];
     if (i > 1) {
@@ -96,14 +97,14 @@ void Player::UpdateTail() {
 }
 void Player::IncrementTail() { current_length_++; }
 void Player::Render() {
-  std::string texture_id = GetTextureId();
+  const std::string texture_id = GetTextureId();
 
   int current_frame = GetCurrentFrame();
 
   for (int i = 0; i < current_length_; i++) {
     TextureManger::Instance()->DrawFrame(
-        texture_id, tail_[i].x, tail_[i].y, width, height, items_per_row,
-        current_frame, tail_rotations_[i], dest_height, dest_width);
+        texture_id, tail_[i].x, tail_[i].y, width_, height_, items_per_row_,
+        current_frame, tail_rotations_[i], dest_height_, dest_width_);
     current_frame++;
     if (current_frame == GetNumFrames())
       current_frame = 0;
@@ -112,14 +113,14 @@ void Player::Render() {
 void Player::NewGame() {
   current_length_ = 1;
 
-  frames_to_jump_back_one_ = (float)GetDestWidth() / movement_speed_;
+  frames_to_jump_back_one_ = static_cast<float>(GetDestWidth()) / movement_speed_;
   tail_.clear();
   rotation_positions_.clear();
 
   tail_.reserve(256);
   tail_rotations_.reserve(256);
   for (int i = 0; i < 256; i++) {
-    tail_.push_back({0, 0});
+    tail_.emplace_back(0, 0);
     tail_rotations_.push_back(0.0f);
   }
   tail_positions_.clear();
@@ -127,16 +128,16 @@ void Player::NewGame() {
   rotation_positions_.reserve(256 * 6);
 
   for (int i = 0; i < 256 * 6; i++) {
-    tail_positions_.push_back({0, 0});
+    tail_positions_.emplace_back(0, 0);
     rotation_positions_.push_back(0.0f);
   }
   is_dead_ = false;
 
-  dest_height = GetDestHeight();
-  dest_width = GetDestWidth();
-  width = GetWidth();
-  height = GetHeight();
-  items_per_row = GetItemsPerRow();
+  dest_height_ = GetDestHeight();
+  dest_width_ = GetDestWidth();
+  width_ = GetWidth();
+  height_ = GetHeight();
+  items_per_row_ = GetItemsPerRow();
 }
 
 Vector2 Player::NewFruitLocation(int width_max, int height_max) {

@@ -26,11 +26,11 @@ public:
   }
 
   ~Application() { delete s_instance_; }
-  SDL_Renderer *GetRenderer() { return renderer_; }
-  SDL_Window *GetWindow() { return window_; }
+  [[nodiscard]] SDL_Renderer *GetRenderer() const { return renderer_; }
+  [[nodiscard]] SDL_Window *GetWindow() const { return window_; }
 
-  int GetScreenWidth() { return screen_width_; }
-  int GetScreenHeight() { return screen_height_; }
+  [[nodiscard]] int GetScreenWidth() const { return screen_width_; }
+  [[nodiscard]] int GetScreenHeight() const { return screen_height_; }
 
   void Run();
   static Application *s_instance_;
@@ -53,10 +53,10 @@ private:
 
   const ApplicationParameters params_ = ApplicationParameters();
 
-  SDL_Window *window_;
-  SDL_Renderer *renderer_;
+  SDL_Window *window_= nullptr;
+  SDL_Renderer *renderer_=nullptr;
   double last_frame_time_ = 0.0;
-  Game *game_;
-  int screen_height_;
-  int screen_width_;
+  Game *game_ =nullptr;
+  int screen_height_ =0;
+  int screen_width_ =0;
 };

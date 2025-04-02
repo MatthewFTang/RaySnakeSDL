@@ -31,7 +31,7 @@ class GameObject {
   [[nodiscard]] int GetCurrentFrame() const { return current_frame_; }
   [[nodiscard]] int GetDestWidth() const { return dest_width_; }
   [[nodiscard]] int GetDestHeight() const { return dest_height_; }
-  std::string GetTextureId() { return &texture_id_[0]; }
+  std::string GetTextureId() const { return &texture_id_[0]; }
   [[nodiscard]] int GetItemsPerRow() const { return items_per_row_; }
   [[nodiscard]] float GetRotation() const { return rotation_; }
   [[nodiscard]] int GetAnimationSpeed() const { return animation_speed_; }

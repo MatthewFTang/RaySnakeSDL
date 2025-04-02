@@ -6,10 +6,11 @@
 
 #include <SDL2/SDL.h>
 
-#include <map>
 #include <string>
 
 #include "Core/Vector2.h"
+
+#include <unordered_map>
 
 class TextureManger {
 
@@ -43,5 +44,5 @@ public:
 private:
     TextureManger() = default;
 
-    std::map<std::string, SDL_Texture *> texture_map_;
+    std::unordered_map<std::string, SDL_Texture *> texture_map_;
 };

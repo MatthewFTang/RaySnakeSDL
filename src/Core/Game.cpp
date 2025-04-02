@@ -30,7 +30,6 @@ void Game::Render() const {
   } else {
     level_->Render();
   }
-  SoundManger::Instance()->Render();
 }
 void Game::Update() {
   if (menu_) {

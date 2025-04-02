@@ -41,9 +41,7 @@ void SoundManger::Pause(const std::string &id) {
   Mix_PauseMusic();
   is_playing_[id] = false;
 }
-void SoundManger::Render() {
-  // Nothing to do
-}
+
 void SoundManger::Clean() {
   for (auto &sound : sound_map_) {
     if (audio_type_[sound.first] == SoundType::MUSIC) {

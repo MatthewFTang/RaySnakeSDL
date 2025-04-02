@@ -5,9 +5,9 @@
 #pragma once
 #include "GameObject.h"
 
-class Food : public GameObject {
+class Food final : public GameObject {
  public:
-  using GameObject::GameObject;;
+  using GameObject::GameObject;
 
   std::string GetGameObjectType() override { return "Food"; }
   void Update() override;

@@ -16,7 +16,7 @@
 #include "Objects/Food.h"
 #include "Objects/Player.h"
 
-Level::Level(GameDifficulty difficulty) : difficulty_(difficulty) {
+Level::Level(const GameDifficulty difficulty) : difficulty_(difficulty) {
   SoundManger::Instance()->Load("src/resources/audio/short_bite.mp3", "bite",
                                 "effect");
   SoundManger::Instance()->Load(
@@ -26,12 +26,12 @@ Level::Level(GameDifficulty difficulty) : difficulty_(difficulty) {
   TextureManger::Instance()->LoadText("src/resources/assets/Brown.png",
                                       "background_tile");
 
-  auto x_max_width = Application::Instance()->GetScreenWidth() - x_max_;
-  n_cols_tiles_ = (int)std::floor(x_max_width / background_size_);
+  const auto x_max_width = Application::Instance()->GetScreenWidth() - x_max_;
+  n_cols_tiles_ = static_cast<int>(std::floor(x_max_width / background_size_));
   x_actual_max_ = x_min_ + n_cols_tiles_ * background_size_;
 
   auto y_max_height = Application::Instance()->GetScreenHeight() - y_max_;
-  n_rows_tiles_ = (int)std::floor(y_max_height / background_size_);
+  n_rows_tiles_ = static_cast<int>(std::floor(y_max_height / background_size_));
   y_actual_max_ = y_min_ + n_rows_tiles_ * background_size_;
   rect_1_ = {x_min_, y_min_, 4, y_actual_max_ - y_min_};
   rect_2_ = {x_min_, y_actual_max_, x_actual_max_ - x_min_, 4};
@@ -59,8 +59,8 @@ void Level::Render() {
   }
 
   if (!playing_) {
-    auto x_pos = (x_min_ + (x_actual_max_ - x_min_) / 2);
-    auto y_pos = (y_min_ + (y_actual_max_ - y_min_) / 2);
+    const auto x_pos = (x_min_ + (x_actual_max_ - x_min_) / 2);
+    const auto y_pos = (y_min_ + (y_actual_max_ - y_min_) / 2);
 
     FontManger::Instance()->RenderText("Game over!", 48, {255, 0, 0}, x_pos,
                                        y_pos - 150, true);
@@ -97,7 +97,7 @@ void Level::CheckCollision() {
     SoundManger::Instance()->Play("game_over", false);
     SoundManger::Instance()->Pause("background_music");
   }
-  SDL_Rect fruit_box = fruit_->GetBoundingBox();
+  const SDL_Rect fruit_box = fruit_->GetBoundingBox();
   player_bounding_box.x += 5;
   player_bounding_box.y += 5;
   player_bounding_box.w -= 10;
@@ -112,7 +112,7 @@ void Level::CheckCollision() {
 }
 
 void Level::AddPlayer() {
-  PlayerInfo p;
+   PlayerInfo p;
   auto player_params =
       LoaderParams(p.file_path, p.x, p.y, p.sprite_width, p.sprite_height,
                    "player", p.num_frames, p.animation_speed, p.dest_width,
@@ -130,7 +130,7 @@ void Level::AddPlayer() {
 void Level::AddFruit() {
   FoodInfo p;
 
-  auto new_loc = player_->NewFruitLocation((x_actual_max_ - x_min_) - 40,
+  const auto new_loc = player_->NewFruitLocation((x_actual_max_ - x_min_) - 40,
                                            (y_actual_max_ - y_min_) - 40);
   p.x = 20 + (x_min_ + new_loc.x);
   p.y = 20 + (y_min_ + new_loc.y);
@@ -146,8 +146,8 @@ void Level::ShowScore() const {
 
   std::string num_s = std::to_string(score_);
   std::string text = "Score \n" + num_s;
-  int win_w = Application::Instance()->GetScreenWidth();
-  int x_pos = win_w - 150;
+  const int win_w = Application::Instance()->GetScreenWidth();
+  const int x_pos = win_w - 150;
   FontManger::Instance()->RenderText(text.c_str(), 48, {255, 255, 255}, x_pos,
                                      50);
 
@@ -180,7 +180,7 @@ void Level::DrawBackground() const {
   SDL_RenderFillRect(Application::Instance()->GetRenderer(), &rect_3_);
   SDL_RenderFillRect(Application::Instance()->GetRenderer(), &rect_4_);
 }
-bool Level::CheckCollisionRecs(SDL_Rect rect, SDL_Rect rect_1) {
+bool Level::CheckCollisionRecs(const SDL_Rect rect, const SDL_Rect rect_1) {
   return ((rect.x < (rect_1.x + rect_1.w) && (rect.x + rect.w) > rect_1.x) &&
           (rect.y < (rect_1.y + rect_1.h) && (rect.y + rect.h) > rect_1.y));
 }
