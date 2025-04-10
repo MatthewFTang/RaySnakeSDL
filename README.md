@@ -6,7 +6,7 @@
 
 ### Gameplay
 
-- Navigate the snake using the **arrow keys**.
+- Navigate the snake using the **arrow keys** or **WASD**.
 - Eat the food to make your snake grow.
 - Avoid running into walls or colliding with yourself to keep playing.
 - Increase the challenge as the snake moves faster with increasing difficulty.
