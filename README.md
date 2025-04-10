@@ -1,30 +1,101 @@
-# RaySnake
+# RaySnakeSDL
 
-## A  snake game written in C++ using the SDL2.
+## About the Project
 
-### How to play:
+**RaySnakeSDL** is a classic Snake game built using **C++20** and the **SDL2** library. The project showcases a simple yet enjoyable gaming experience while highlighting SDL2's capabilities in game development.
 
-- Use the arrow keys to move the snake.
-- Eat the food to grow the snake.
-- Don't run into the walls or yourself.
+### Gameplay
 
-- The difficulty level makes the snake move faster.
+- Navigate the snake using the **arrow keys**.
+- Eat the food to make your snake grow.
+- Avoid running into walls or colliding with yourself to keep playing.
+- Increase the challenge as the snake moves faster with increasing difficulty.
 
-### How to build:
+---
 
-- Clone the repository.
+## Getting Started
+
+Follow these steps to build and run the project on your machine.
+
+### Prerequisites
+
+Ensure you have the following libraries installed on your system:
+
+- **SDL2**
+- **SDL2_image**
+- **SDL2_ttf**
+- **SDL2_mixer**
+
+On Linux, you can install these dependencies using your package manager. For example, on Ubuntu:
 
 ```bash
-  mkdir build
-  cd build
-  cmake ..
-  make
-
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 ```
 
-### Requirements
+### Build Instructions
 
-- SDL2
-- SDL2_image
-- SDL2_ttf
-- SDL2_mixer
+1. Clone the repository:
+
+    ```bash
+    git clone <repository-url>
+    cd RaySnakeSDL
+    ```
+
+2. Create a build directory:
+
+    ```bash
+    mkdir build
+    cd build
+    ```
+
+3. Build the project using CMake and `make`:
+
+    ```bash
+    cmake ..
+    make
+    ```
+
+4. Run the executable:
+
+    ```bash
+    ./ray_snake
+    ```
+
+---
+
+## Controls
+
+- **Arrow Keys or WASD**: Control the snake’s direction.
+- **Objective**: Grow your snake by eating the food while avoiding collisions.
+
+---
+
+## Features
+
+- Classic snake game mechanics.
+- Difficulty scaling as the snake grows.
+- Smooth gameplay using SDL2.
+- Cross-platform support.
+
+---
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improving the game or adding new features:
+
+1. Fork the repository.
+2. Create a new branch for your feature: `git checkout -b feature/NewFeature`.
+3. Commit your changes: `git commit -m 'Add new feature'`.
+4. Push to the branch: `git push origin feature/NewFeature`.
+5. Open a pull request.
+
+---
+
+
+
+## Acknowledgments
+
+- Thanks to the SDL2 library for providing an excellent framework for game development.
+- Inspired by classic Snake games.
+
+Enjoy the game!
