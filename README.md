@@ -58,17 +58,12 @@ brew install sdl2 sdl2_mixer sdl2_image sdl2_ttf
     cd build
     ```
 
-3. Build the project using CMake and `make`:
+3. Build the project using CMake and `make` and run:
 
     ```bash
     cmake ..
     make
-    ```
-
-4. Run the executable:
-
-    ```bash
-    ./ray_snake
+    ./RaySnakeSDL
     ```
 
 ---
