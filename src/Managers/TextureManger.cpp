@@ -15,7 +15,6 @@ TextureManger *TextureManger::s_instance_ = nullptr;
 void TextureManger::LoadText(std::string const &file_name,
                              std::string const &id) {
   if (!texture_map_.contains(id)) {
-    if (std::filesystem::exists(file_name)) {
       SDL_Surface *temp_surface = IMG_Load(file_name.c_str());
       SDL_Texture *temp_texture = SDL_CreateTextureFromSurface(
           Application::Instance()->GetRenderer(), temp_surface);
@@ -25,7 +24,7 @@ void TextureManger::LoadText(std::string const &file_name,
       else
         std::cout << "TextureManger :: File (" << file_name << ") error"
                   << std::endl;
-    }
+
   }
 }
 void TextureManger::DrawImage(const std::string &id) {

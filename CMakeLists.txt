@@ -41,11 +41,23 @@ target_link_libraries(${PROJECT_NAME}
         SDL2_image::SDL2_image
         SDL2_ttf::SDL2_ttf)
 # Specify the source directory containing your resources
-set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/src/resources")
 
-# Specify the destination directory in the build folder
-set(DEST_DIR "${CMAKE_BINARY_DIR}/src/")
+# Define the source directory for the resources
+set(RESOURCES_FOLDER "${CMAKE_SOURCE_DIR}/src/resources")
 
-# Copy the directory
-file(COPY ${RESOURCE_DIR} DESTINATION ${DEST_DIR})
+# Define the directory to copy resources to (inside the build directory)
+set(RESOURCES_OUTPUT_FOLDER "${CMAKE_BINARY_DIR}/src/resources")
 
+# Verify that the source `resources` folder exists before copying
+if(EXISTS ${RESOURCES_FOLDER})
+    add_custom_target(CopyResources ALL
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${RESOURCES_FOLDER}" "${RESOURCES_OUTPUT_FOLDER}"
+            COMMENT "Copying resources to build directory"
+    )
+
+    # Ensure resources are copied before building the executable
+    add_dependencies(${PROJECT_NAME} CopyResources)
+else()
+    message(FATAL_ERROR "The resources folder does not exist at ${RESOURCES_FOLDER}")
+endif()
