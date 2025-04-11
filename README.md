@@ -4,6 +4,12 @@
 
 **RaySnakeSDL** is a classic Snake game built using **C++20** and the **SDL2** library. The project showcases a simple yet enjoyable gaming experience while highlighting SDL2's capabilities in game development.
 
+Main screen    |  Game
+:-------------------------:|:-------------------------:
+![Local image](./images/mainscreen.png)  |  ![Local image](./images/game.png)
+
+
+
 ### Gameplay
 
 - Navigate the snake using the **arrow keys** or **WASD**.
