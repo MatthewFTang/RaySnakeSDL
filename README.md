@@ -32,12 +32,12 @@ Ensure you have the following libraries installed on your system:
 - **SDL2_ttf**
 - **SDL2_mixer**
 
-On Linux, you can install these dependencies using your package manager. For example, on Ubuntu:
+On Linux, you can install these dependencies using your package manager. For example, on Arch:
 
 ```bash
 sudo pacman -S sdl2 sdl2_mixer sdl2_image sdl2_ttf
 ```
-or  
+or on Mac:
 
 ```bash
 brew install sdl2 sdl2_mixer sdl2_image sdl2_ttf
