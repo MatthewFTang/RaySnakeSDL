@@ -29,15 +29,19 @@ Ensure you have the following libraries installed on your system:
 On Linux, you can install these dependencies using your package manager. For example, on Ubuntu:
 
 ```bash
-sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+sudo pacman -S sdl2 sdl2_mixer sdl2_image sdl2_ttf
 ```
+or  
 
+```bash
+brew install sdl2 sdl2_mixer sdl2_image sdl2_ttf
+```
 ### Build Instructions
 
 1. Clone the repository:
 
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/MatthewFTang/RaySnakeSDL.git
     cd RaySnakeSDL
     ```
 

@@ -4,7 +4,7 @@
 
 #pragma once
 #include <string>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "Core/LoaderParams.h"
 #include "Core/Vector2.h"
 
