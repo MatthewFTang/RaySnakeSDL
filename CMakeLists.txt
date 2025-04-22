@@ -31,17 +31,14 @@ add_executable(${PROJECT_NAME}
         src/Menu/DifficultlyMenu.cpp
         src/Core/Level.cpp
         src/Menu/AboutMenu.cpp)
-
-include_directories(src)
-
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS)
 target_link_libraries(${PROJECT_NAME}
         PRIVATE SDL2::SDL2
         SDL2_mixer::SDL2_mixer
         SDL2_image::SDL2_image
         SDL2_ttf::SDL2_ttf)
 # Specify the source directory containing your resources
-
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src)
 # Define the source directory for the resources
 set(RESOURCES_FOLDER "${CMAKE_SOURCE_DIR}/src/resources")
 
