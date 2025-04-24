@@ -2,7 +2,9 @@
 CMakeCache.txt
 CMakeFiles/
 cmake-build-debug
+/out
 
+./compile-commands.json
 cmake_install.cmake
 Makefile
 *.make
@@ -34,3 +36,4 @@ Debug/
 *.user.*
 
 # Exclude the directory where CMake external projects are downloaded
+compile_commands.json

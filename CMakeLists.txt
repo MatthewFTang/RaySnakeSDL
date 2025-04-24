@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.8)
 project(RaySnakeSDL)
 
 set(CMAKE_CXX_STANDARD 20 )
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(SDL2 REQUIRED CONFIG REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_image REQUIRED)
