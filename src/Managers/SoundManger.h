@@ -52,7 +52,12 @@ public:
    * @brief Get the singleton instance of SoundManger.
    * @return Pointer to the SoundManger instance.
    */
-  static SoundManger *Instance();
+  static SoundManger *Instance() {
+    if (s_instance_ == nullptr) {
+      s_instance_ = new SoundManger();
+    }
+    return s_instance_;
+  };
 
   /**
    * @brief Load an audio file into memory.

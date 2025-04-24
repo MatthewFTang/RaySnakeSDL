@@ -40,3 +40,41 @@
 // ----------------
 // - static FontManger *s_instance_:
 //     A static pointer to the singleton instance of the FontManger class.
+//
+
+#pragma once
+
+#include <SDL.h>
+
+#include <SDL_ttf.h>
+
+#include <map>
+
+class FontManger {
+
+public:
+  static FontManger *s_instance_;
+
+  static FontManger *Instance() {
+
+    if (s_instance_ == nullptr) {
+
+      s_instance_ = new FontManger();
+
+      return s_instance_;
+    }
+
+    return s_instance_;
+  }
+
+  void RenderText(const char *text, int font_size, SDL_Color col, int pos_x,
+
+                  int pos_y, bool centered = false);
+
+  ~FontManger();
+
+private:
+  FontManger() = default;
+
+  std::map<int, TTF_Font *> font_map_;
+};
