@@ -20,8 +20,8 @@
 struct ApplicationParameters {
   const char *title = "RaySnake"; // Title of the application window.
   bool full_screen = false; // Whether the application runs in fullscreen mode.
-  int window_width = 1000;  // Width of the application window.
-  int window_height = 800;  // Height of the application window.
+  const int window_width = 1000; // Width of the application window.
+  const int window_height = 800; // Height of the application window.
 };
 
 // The main application class.
@@ -86,7 +86,7 @@ private:
   void Clean();
 
   // Background color of the application window.
-  SDL_Color background_color_ = {
+  const SDL_Color background_color_ = {
       249, // Red
       123, // Green
       54,  // Blue
