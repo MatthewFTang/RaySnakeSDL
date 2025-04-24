@@ -15,6 +15,7 @@
 
 #include "Core/Game.h"
 #include <SDL.h>
+#include <memory>
 
 // Struct to hold application configuration parameters.
 struct ApplicationParameters {
@@ -106,7 +107,7 @@ private:
   double last_frame_time_ = 0.0;
 
   // Pointer:h  to the game instance managed by the application.
-  Game *game_ = nullptr;
+  std::unique_ptr<Game> game_;
 
   // Screen height in pixels.
   int screen_height_ = 0;
