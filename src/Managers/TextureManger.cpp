@@ -6,12 +6,13 @@
 
 #include <SDL_image.h>
 
+#include <SDL_render.h>
 #include <filesystem>
 #include <iostream>
+#include <memory>
 
 #include "Core/Application.h"
-TextureManger *TextureManger::s_instance_ = nullptr;
-
+std::unique_ptr<TextureManger> TextureManger::s_instance_ = nullptr;
 void TextureManger::LoadText(std::string const &file_name,
                              std::string const &id) {
   if (!texture_map_.contains(id)) {
@@ -107,7 +108,7 @@ void TextureManger::DeleteTexture(const std::string &id) {
 
 Vector2 TextureManger::GetTextureDimensions(const std::string &id) {
   int text_size_w = 0;
-  int text_size_h = 0; // Declare variables to hold the size
+  int text_size_h = 0;             // Declare variables to hold the size
   if (texture_map_.contains(id)) { // Check if the texture exists
     SDL_Texture *texture = texture_map_[id];
     if (SDL_QueryTexture(texture, nullptr, nullptr, &text_size_w,
