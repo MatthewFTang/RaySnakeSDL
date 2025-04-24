@@ -47,24 +47,20 @@
 #include <SDL.h>
 
 #include <SDL_ttf.h>
-
 #include <map>
+#include <memory.h>
+#include <memory>
 
 class FontManger {
 
 public:
-  static FontManger *s_instance_;
-
   static FontManger *Instance() {
 
-    if (s_instance_ == nullptr) {
+    if (!s_instance_) {
 
-      s_instance_ = new FontManger();
-
-      return s_instance_;
+      s_instance_ = std::unique_ptr<FontManger>(new FontManger());
     }
-
-    return s_instance_;
+    return s_instance_.get();
   }
 
   void RenderText(const char *text, int font_size, SDL_Color col, int pos_x,
@@ -75,6 +71,6 @@ public:
 
 private:
   FontManger() = default;
-
+  static std::unique_ptr<FontManger> s_instance_;
   std::map<int, TTF_Font *> font_map_;
 };

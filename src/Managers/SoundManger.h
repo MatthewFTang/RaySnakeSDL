@@ -15,6 +15,7 @@
 #pragma once
 
 #include <SDL_mixer.h>
+#include <memory>
 #include <string>
 #include <unordered_map>
 
@@ -46,17 +47,16 @@ public:
   /**
    * @brief Static instance of the SoundManger class.
    */
-  static SoundManger *s_instance_;
 
   /**
    * @brief Get the singleton instance of SoundManger.
    * @return Pointer to the SoundManger instance.
    */
   static SoundManger *Instance() {
-    if (s_instance_ == nullptr) {
-      s_instance_ = new SoundManger();
+    if (!s_instance_) {
+      s_instance_ = std::unique_ptr<SoundManger>(new SoundManger());
     }
-    return s_instance_;
+    return s_instance_.get();
   };
 
   /**
@@ -96,7 +96,7 @@ private:
    * @brief Private constructor for the SoundManger class (singleton pattern).
    */
   SoundManger();
-
+  static std::unique_ptr<SoundManger> s_instance_; ///< Singleton instance.
   std::unordered_map<std::string, audioTypes>
       sound_map_; ///< Map of audio IDs to audio data.
   std::unordered_map<std::string, SoundType>
