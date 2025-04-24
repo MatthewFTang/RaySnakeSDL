@@ -26,14 +26,15 @@
 
 #include <SDL.h>
 
+#include <memory>
 #include <unordered_map>
 
 class InputManager {
 public:
   static InputManager *Instance() {
-    if (s_instance_ == nullptr)
-      s_instance_ = new InputManager();
-    return s_instance_;
+    if (!s_instance_)
+      s_instance_ = std::unique_ptr<InputManager>(new InputManager);
+    return s_instance_.get();
   }
   ~InputManager() = default;
   InputManager(const InputManager *) = delete;
@@ -45,7 +46,7 @@ public:
 
 private:
   InputManager() = default;
-  static InputManager *s_instance_;
+  static std::unique_ptr<InputManager> s_instance_;
   std::unordered_map<SDL_Keycode, bool> key_map_;
   std::unordered_map<SDL_Keycode, bool> key_read_;
   bool quit_application_ = false;
