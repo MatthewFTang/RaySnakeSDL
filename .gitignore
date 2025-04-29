@@ -32,5 +32,6 @@ Debug/
 # User-specific files
 *.user
 *.user.*
-
+package-lock.json
+package.json
 # Exclude the directory where CMake external projects are downloaded
