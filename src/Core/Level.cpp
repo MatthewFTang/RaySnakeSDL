@@ -168,8 +168,8 @@ void Level::DrawBackground() const {
 
   for (int x = 0; x < n_cols_tiles_; x++) {
     for (int y = 0; y < n_rows_tiles_; y++) {
-      auto x1 = x_min_ + x * background_size_;
-      auto y1 = y_min_ + y * background_size_;
+      const auto x1 = x_min_ + x * background_size_;
+      const auto y1 = y_min_ + y * background_size_;
       TextureManger::Instance()->DrawImageWithSize(
           "background_tile", x1, y1, background_size_, background_size_);
     }

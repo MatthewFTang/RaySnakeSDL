@@ -4,8 +4,9 @@
 
 #include "SoundManger.h"
 #include <iostream>
-SoundManger *SoundManger::s_instance_ = nullptr;
 
+std::unique_ptr<SoundManger> SoundManger::s_instance_ =
+    nullptr; ///< Singleton instance.
 void SoundManger::Load(const std::string &file_path, const std::string &id,
                        const std::string &type) {
   if (!sound_map_.contains(id)) {
