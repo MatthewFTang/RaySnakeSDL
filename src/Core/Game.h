@@ -1,7 +1,26 @@
-//
+/**
+ * @class Game
+ * @brief Represents the core game engine responsible for managing the game
+ * loop, state, and resources.
+ *
+ * The Game class serves as the central hub for the application, handling the
+ * game loop, rendering, updating game logic, and managing transitions between
+ * menus and levels. It provides methods to start, update, render, and quit the
+ * game, as well as utilities for managing game state and resources.
+ *
+ * Key responsibilities include:
+ * - Managing the game loop and ensuring smooth execution.
+ * - Handling transitions between menus and gameplay levels.
+ * - Providing an interface for starting new games and setting difficulty
+ * levels.
+ * - Managing global resources and cleanup.
+ *
+ * The class also provides utility functions to check the running state of the
+ * game and dynamically set the current menu.
+ */
+
 // Created by Matt on 2/07/2024.
 //
-
 #pragma once
 
 #include <memory>
