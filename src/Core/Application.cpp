@@ -9,8 +9,8 @@
 
 #include "Application.h"
 
+#include <SDL_timer.h>
 #include <SDL_ttf.h>
-#include <iostream>
 
 #include "Game.h"
 #include "Managers/InputManager.h"
@@ -104,9 +104,7 @@ void Application::Render() {
   game_->Render();
 
   // Wait to maintain a consistent frame rate (e.g., 15ms per frame).
-  while (SDL_GetTicks() - last_frame_time_ < 15) {
-    // Busy-wait until the frame time has elapsed.
-  }
+  SDL_Delay(14);
 
   // Present the rendered frame to the screen.
   SDL_RenderPresent(renderer_);
