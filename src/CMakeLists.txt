@@ -1,14 +1,28 @@
-# This file handles building each task as sub-project.
-#
-# Each task becomes an independent project in which you can experiment.
-#
-# Tasks are added as separate sub-projects so as compilation errors in
-# one task don't affect another task.
+
+target_sources(${PROJECT_NAME} PRIVATE
+    main.cpp
+    Core/Application.h
+    Core/Application.cpp
+    Core/Game.h
+    Core/Game.cpp
+    Core/LoaderParams.h
+    Core/Vector2.cpp
+    Core/Vector2.h
+    Core/Level.cpp
+    Menu/Menu.h
+    Menu/MainMenu.cpp
+    Menu/DifficultlyMenu.cpp
+    Menu/AboutMenu.cpp
+    Objects/Food.cpp
+    Objects/Player.cpp
+    Objects/GameObject.cpp
+    Managers/FontManger.cpp
+    Managers/SoundManger.cpp
+    Managers/TextureManger.cpp
+    Managers/InputManager.cpp
+)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 
-project(${PROJECT_NAME})
 
-set(CMAKE_CXX_STANDARD)
-file(GLOB_RECURSE SOURCE_FILE CONFIGURE_DEPENDS *.cpp)
-target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILE})
 

@@ -4,12 +4,11 @@
 
 #pragma once
 
-#include <vector>
-
 #include "GameDifficulty.h"
 #include "Objects/Food.h"
 #include "Objects/Player.h"
 #include <memory>
+
 class GameObject;
 
 class Level {

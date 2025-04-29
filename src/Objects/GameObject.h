@@ -7,7 +7,7 @@
 #include <SDL.h>
 #include "Core/LoaderParams.h"
 #include "Core/Vector2.h"
-
+#
 class GameObject {
 
  public:

@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "Core/Game.h"
+#include "Game.h"
 #include <SDL.h>
 #include <memory>
 
