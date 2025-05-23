@@ -6,7 +6,8 @@ compile_commands.json
 cmake_install.cmake
 Makefile
 *.make
-
+/cmake-build-debug
+/cmake-build-release
 # Build artifacts
 build/
 Release/

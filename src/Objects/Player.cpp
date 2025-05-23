@@ -5,7 +5,6 @@
 #include "Player.h"
 
 #include <cmath>
-#include <random>
 
 #include "Managers/InputManager.h"
 #include "Managers/TextureManger.h"
@@ -54,8 +53,10 @@ void Player::UpdatePosition() {
   }
   input_this_frame_ = false;
 
-  const auto dx = static_cast<int>(std::round(movement_speed_ * std::cos(current_angle_)));
-  const auto dy = static_cast<int>(std::round(movement_speed_ * std::sin(current_angle_)));
+  const auto dx =
+      static_cast<int>(std::round(movement_speed_ * std::cos(current_angle_)));
+  const auto dy =
+      static_cast<int>(std::round(movement_speed_ * std::sin(current_angle_)));
 
   pos_accum_.x = pos_accum_.y = 0;
   Vector2 pos = GetPosition();
@@ -68,8 +69,7 @@ void Player::UpdatePosition() {
 
 void Player::UpdateTail() {
 
-  const auto number_pos_needed =
-      static_cast<int>(std::floor(
+  const auto number_pos_needed = static_cast<int>(std::floor(
       frames_to_jump_back_one_ * static_cast<float>(current_length_) - 1));
   tail_positions_[0] = GetPosition();
 
@@ -113,7 +113,8 @@ void Player::Render() {
 void Player::NewGame() {
   current_length_ = 1;
 
-  frames_to_jump_back_one_ = static_cast<float>(GetDestWidth()) / movement_speed_;
+  frames_to_jump_back_one_ =
+      static_cast<float>(GetDestWidth()) / movement_speed_;
   tail_.clear();
   rotation_positions_.clear();
 

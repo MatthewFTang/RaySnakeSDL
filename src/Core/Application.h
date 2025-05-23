@@ -38,16 +38,13 @@ public:
   // Returns the singleton instance of the Application class.
   static Application *Instance() {
     if (!s_instance_) {
-      s_instance_ = new Application();
+      s_instance_ = std::unique_ptr<Application>(new Application());
     }
-    return s_instance_;
+    return s_instance_.get();
   }
 
   // Destructor: Cleans up resources and deletes the singleton instance.
-  ~Application() {
-    Clean();
-    delete s_instance_;
-  }
+  ~Application() { Clean(); }
 
   // Returns the SDL renderer used by the application.
   [[nodiscard]] SDL_Renderer *GetRenderer() const { return renderer_; }
@@ -65,7 +62,7 @@ public:
   void Run();
 
   // Static pointer to the singleton instance.
-  static Application *s_instance_;
+  static std::unique_ptr<Application> s_instance_;
 
 private:
   // Private constructor to enforce the singleton pattern.

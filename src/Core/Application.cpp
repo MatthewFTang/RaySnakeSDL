@@ -18,7 +18,7 @@
 #include <stdexcept>
 #include <string>
 // Static instance of the Application singleton.
-Application *Application::s_instance_ = nullptr;
+std::unique_ptr<Application> Application::s_instance_ = nullptr;
 
 // Starts the main application loop.
 void Application::Run() {
